@@ -1,6 +1,6 @@
---select *
---from Portfolio_Projects..CovidDeaths
---order by 3,4;
+select *
+from Portfolio_Projects..CovidDeaths
+order by 3,4;
 
 --select *
 --from Portfolio_Projects..CovidDeaths
@@ -10,8 +10,7 @@
 -- altering datatype of table column for exploration
 
 --Alter Table Portfolio_Projects..CovidDeaths
---ALTER COLUMN total_deaths integer
-
+--ALTER COLUMN new_cases integer
 
 
 --Selecting Data that we are going to be using
@@ -79,3 +78,22 @@ where continent is not null
 group by continent
 order by Highest_Death_Rate desc
 
+-- looking at GLOBAL NUMBERS
+
+select date, SUM(new_cases) as Total_Cases, SUM(new_deaths) as Total_Deaths, 
+             (SUM(new_cases)/SUM(new_deaths)*100) as Death_Percentage
+from Portfolio_Projects..CovidDeaths
+--where location like '%India%'
+where continent is not NULL
+group by [date]
+order by 1, 2
+
+-- Total population vs Vaccinations per Day
+
+select cd.continent, cd.[location],cd.[date], cd.population, cv.new_vaccinations
+from Portfolio_Projects..CovidDeaths cd
+join Portfolio_Projects..CovidVaccinations cv
+  ON cd.[location] = cd.[location] 
+  and cd.[date] = cv.[date]
+where cd.continent is not NULL
+order by 1, 2  
