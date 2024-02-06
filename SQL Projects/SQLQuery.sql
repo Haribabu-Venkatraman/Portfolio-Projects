@@ -90,7 +90,8 @@ order by 1, 2
 
 -- Total population vs Vaccinations per Day
 
-select cd.continent, cd.[location],cd.[date], cd.population, cv.new_vaccinations
+select cd.continent, cd.[location],cd.[date], cd.population, cv.new_vaccinations,
+       SUM(cast(cv.new_vaccinations as int)) over (partition by cd.location order by cd.location, cd.date)
 from Portfolio_Projects..CovidDeaths cd
 join Portfolio_Projects..CovidVaccinations cv
   ON cd.[location] = cd.[location] 
