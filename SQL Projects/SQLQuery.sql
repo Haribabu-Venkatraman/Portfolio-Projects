@@ -114,5 +114,5 @@ join Portfolio_Projects..CovidVaccinations cv
 where cd.continent is not NULL
 --order by 1,2
 )        
-select (vaccinated_rolling)/max(population)*100
+select (vaccinated_rolling)/(population)*100 as   vaccinated_rolling_percent
 from popvsvac
