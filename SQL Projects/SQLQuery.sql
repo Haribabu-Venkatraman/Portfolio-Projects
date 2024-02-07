@@ -9,8 +9,8 @@ order by 3,4;
 
 -- altering datatype of table column for exploration
 
---Alter Table Portfolio_Projects..CovidDeaths
---ALTER COLUMN new_cases integer
+Alter Table Portfolio_Projects..CovidVaccinations
+ALTER COLUMN new_vaccinations integer
 
 
 --Selecting Data that we are going to be using
@@ -90,11 +90,29 @@ order by 1, 2
 
 -- Total population vs Vaccinations per Day
 
-select cd.continent, cd.[location],cd.[date], cd.population, cv.new_vaccinations,
-       SUM(cast(cv.new_vaccinations as int)) over (partition by cd.location order by cd.location, cd.date)
+select cd.continent, cd.location, cd.date, cd.population, cv.new_vaccinations,
+       SUM(cv.new_vaccinations) over(partition by cd.location order by cd.location, cd.date) as vaccinated_rolling
 from Portfolio_Projects..CovidDeaths cd
 join Portfolio_Projects..CovidVaccinations cv
-  ON cd.[location] = cd.[location] 
-  and cd.[date] = cv.[date]
+  ON cd.location = cv.location 
+  and cd.date = cv.[date]
 where cd.continent is not NULL
-order by 1, 2  
+order by 1,2
+
+
+-- Using CTE: Total population vs Vaccinations per Day
+
+with popvsvac(continent, location, date, population, new_vaccinations,vaccinated_rolling)
+as
+(
+select cd.continent, cd.location, cd.date, cd.population, cv.new_vaccinations,
+       SUM(cv.new_vaccinations) over(partition by cd.location order by cd.location, cd.date) as vaccinated_rolling
+from Portfolio_Projects..CovidDeaths cd
+join Portfolio_Projects..CovidVaccinations cv
+  ON cd.location = cv.location 
+  and cd.date = cv.[date]
+where cd.continent is not NULL
+--order by 1,2
+)        
+select (vaccinated_rolling)/max(population)*100
+from popvsvac
