@@ -1,3 +1,6 @@
+
+-- 
+
 select *
 from Portfolio_Projects..CovidDeaths
 order by 3,4;
@@ -78,6 +81,17 @@ where continent is not null
 group by continent
 order by Highest_Death_Rate desc
 
+-- Creating View to store data for Visualization
+
+create view continent_death_count as
+select continent, max(cast (total_deaths as int)) as Highest_Death_Rate
+from Portfolio_Projects..CovidDeaths
+--where location like '%India%' 
+where continent is not null
+group by continent
+order by Highest_Death_Rate desc
+
+
 -- looking at GLOBAL NUMBERS
 
 select date, SUM(new_cases) as Total_Cases, SUM(new_deaths) as Total_Deaths, 
@@ -87,6 +101,20 @@ from Portfolio_Projects..CovidDeaths
 where continent is not NULL
 group by [date]
 order by 1, 2
+
+-- Creating View to store data for Visualization
+
+create view global_numbers as
+select date, SUM(new_cases) as Total_Cases, SUM(new_deaths) as Total_Deaths, 
+             (SUM(new_cases)/SUM(new_deaths)*100) as Death_Percentage
+from Portfolio_Projects..CovidDeaths
+--where location like '%India%'
+where continent is not NULL
+group by [date]
+--order by 1, 2
+
+
+
 
 -- Total population vs Vaccinations per Day
 
@@ -110,9 +138,60 @@ select cd.continent, cd.location, cd.date, cd.population, cv.new_vaccinations,
 from Portfolio_Projects..CovidDeaths cd
 join Portfolio_Projects..CovidVaccinations cv
   ON cd.location = cv.location 
-  and cd.date = cv.[date]
+  and cd.date = cv.date
 where cd.continent is not NULL
 --order by 1,2
 )        
 select (vaccinated_rolling)/(population)*100 as   vaccinated_rolling_percent
 from popvsvac
+
+
+-- CTE: POPULATION AGED 65~70 AND OLDER VS TOTAL DEATHS
+
+select *
+from Portfolio_Projects..CovidDeaths cd
+join Portfolio_Projects..CovidVaccinations cv
+ on cd.location = cv.location
+ and cd.date = cv.date
+where cd.continent is not null
+
+
+--  TEMP TABLE 
+-- making calculations using  TEMP TABLE 
+
+drop table if exists #popvac_percentage
+Create table #popvac_percentage
+(
+continent nvarchar(255),
+location nvarchar(255),
+date datetime,
+population Numeric,
+new_vaccinations Numeric,
+vaccinated_rolling numeric
+)
+Insert into #popvac_percentage
+Select cd.continent, cd.location, cd.date, cd.population, cv.new_vaccinations,
+       SUM(cv.new_vaccinations) over(partition by cd.location order by cd.location, cd.date) as vaccinated_rolling
+from Portfolio_Projects..CovidDeaths cd
+join Portfolio_Projects..CovidVaccinations cv
+  ON cd.location = cv.location 
+  and cd.date = cv.date
+where cd.continent is not NULL
+--order by 1,2
+
+select *
+from #popvac_percentage
+
+
+
+-- Creating View to store data for Visualization
+
+create view popvac_percentage as
+Select cd.continent, cd.location, cd.date, cd.population, cv.new_vaccinations,
+       SUM(cv.new_vaccinations) over(partition by cd.location order by cd.location, cd.date) as vaccinated_rolling
+from Portfolio_Projects..CovidDeaths cd
+join Portfolio_Projects..CovidVaccinations cv
+  ON cd.location = cv.location 
+  and cd.date = cv.date
+where cd.continent is not NULL
+--order by 1,2
