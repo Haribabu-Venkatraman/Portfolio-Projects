@@ -178,7 +178,6 @@ join Portfolio_Projects..CovidVaccinations cv
   and cd.date = cv.date
 where cd.continent is not NULL
 --order by 1,2
-
 select *
 from #popvac_percentage
 
