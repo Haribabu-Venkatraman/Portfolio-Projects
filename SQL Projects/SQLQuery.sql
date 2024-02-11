@@ -1,13 +1,23 @@
+-- -------------------------------------------------------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------------------------------------------------
 
--- 
+--                                                     COVID-19 DATA EXPLORATION PROJECT  
+
+-- -------------------------------------------------------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-- SQL SKILLS USED: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+
+-- Looking at tables we are going to use
 
 select *
 from Portfolio_Projects..CovidDeaths
 order by 3,4;
 
---select *
---from Portfolio_Projects..CovidDeaths
---order by 3,4;
+select *
+from Portfolio_Projects..CovidDeaths
+order by 3,4;
 
 
 -- altering datatype of table column for exploration
