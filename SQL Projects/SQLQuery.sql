@@ -148,12 +148,35 @@ from popvsvac
 
 -- CTE: POPULATION AGED 65~70 AND OLDER VS TOTAL DEATHS
 
-select *
+with popvstotaldeath(Continent,location,date,total_deaths,aged_65_rolling,aged_70_rolling)
+as
+(
+select cd.continent, cd.location, cd.date, cd.total_deaths,
+       SUM(cv.aged_65_older) over(partition by cd.location order by cd.location, cd.date) as aged_65_rolling,
+       SUM(cv.aged_70_older) over(partition by cd.location order by cd.location, cd.date) as aged_70_rolling 
 from Portfolio_Projects..CovidDeaths cd
 join Portfolio_Projects..CovidVaccinations cv
  on cd.location = cv.location
  and cd.date = cv.date
 where cd.continent is not null
+)
+select *, ((aged_65_rolling)+(aged_70_rolling))/(total_deaths) as popvstotaldeath
+from popvstotaldeath
+
+
+-- Creating View to store data for Visualization
+
+create view popvstotaldeath as
+select cd.continent, cd.location, cd.date, cd.total_deaths,
+       SUM(cv.aged_65_older) over(partition by cd.location order by cd.location, cd.date) as aged_65_rolling,
+       SUM(cv.aged_70_older) over(partition by cd.location order by cd.location, cd.date) as aged_70_rolling 
+from Portfolio_Projects..CovidDeaths cd
+join Portfolio_Projects..CovidVaccinations cv
+ on cd.location = cv.location
+ and cd.date = cv.date
+where cd.continent is not null
+
+
 
 
 --  TEMP TABLE 
