@@ -148,19 +148,20 @@ from popvsvac
 
 -- CTE: POPULATION AGED 65~70 AND OLDER VS TOTAL DEATHS
 
-with popvstotaldeath(Continent,location,date,total_deaths,aged_65_rolling,aged_70_rolling)
+with popvstotaldeath(Continent,location,date,total_deaths,aged_65_rolling,aged_70_rolling,total_deaths_rolling)
 as
 (
 select cd.continent, cd.location, cd.date, cd.total_deaths,
        SUM(cv.aged_65_older) over(partition by cd.location order by cd.location, cd.date) as aged_65_rolling,
-       SUM(cv.aged_70_older) over(partition by cd.location order by cd.location, cd.date) as aged_70_rolling 
+       SUM(cv.aged_70_older) over(partition by cd.location order by cd.location, cd.date) as aged_70_rolling, 
+       SUM(cd.total_deaths) over(partition by cd.location order by cd.location, cd.date) as total_deaths_rolling
 from Portfolio_Projects..CovidDeaths cd
 join Portfolio_Projects..CovidVaccinations cv
  on cd.location = cv.location
  and cd.date = cv.date
 where cd.continent is not null
 )
-select *, ((aged_65_rolling)+(aged_70_rolling))/(total_deaths) as popvstotaldeath
+select *, ((aged_65_rolling)+(aged_70_rolling))/(total_deaths_rolling) as popvstotaldeath
 from popvstotaldeath
 
 
@@ -169,7 +170,8 @@ from popvstotaldeath
 create view popvstotaldeath as
 select cd.continent, cd.location, cd.date, cd.total_deaths,
        SUM(cv.aged_65_older) over(partition by cd.location order by cd.location, cd.date) as aged_65_rolling,
-       SUM(cv.aged_70_older) over(partition by cd.location order by cd.location, cd.date) as aged_70_rolling 
+       SUM(cv.aged_70_older) over(partition by cd.location order by cd.location, cd.date) as aged_70_rolling, 
+       SUM(cd.total_deaths) over(partition by cd.location order by cd.location, cd.date) as total_deaths_rolling
 from Portfolio_Projects..CovidDeaths cd
 join Portfolio_Projects..CovidVaccinations cv
  on cd.location = cv.location
