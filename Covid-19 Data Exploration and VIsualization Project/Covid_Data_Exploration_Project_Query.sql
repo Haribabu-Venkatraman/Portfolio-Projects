@@ -85,45 +85,45 @@ order by Total_Death_Percentage desc
 
 -- Country with highest death count
 
-select location, max(cast (total_deaths as int)) as Highest_Death_Rate
+select location, max(cast (total_deaths as int)) as Highest_Death_count
 from Portfolio_Projects..CovidDeaths
 --where location like '%India%' 
 where continent is not null
 group by location
-order by Highest_Death_Rate desc
+order by Highest_Death_count desc
 
 
 -- Creating View to store data for Visualization
 
 create view Country_Highest_deathcount as
-select location, max(cast (total_deaths as int)) as Highest_Death_Rate
+select location, max(cast (total_deaths as int)) as Highest_Death_count
 from Portfolio_Projects..CovidDeaths
 --where location like '%India%' 
 where continent is not null
 group by location
---order by Highest_Death_Rate desc
+--order by Highest_Death_count desc
 
 
 
 -- BREAKING DOWN BY CONTINENT
 -- continent with Highest Death Count
 
-select continent, max(cast (total_deaths as int)) as Highest_Death_Rate
+select continent, max(cast (total_deaths as int)) as Highest_Death_count
 from Portfolio_Projects..CovidDeaths
 --where location like '%India%' 
 where continent is not null
 group by continent
-order by Highest_Death_Rate desc
+order by Highest_Death_count desc
 
 -- Creating View to store data for Visualization
 
 create view continent_death_count as
-select continent, max(cast (total_deaths as int)) as Highest_Death_Rate
+select continent, max(cast (total_deaths as int)) as Highest_Death_count
 from Portfolio_Projects..CovidDeaths
 --where location like '%India%' 
 where continent is not null
 group by continent
-order by Highest_Death_Rate desc
+--order by Highest_Death_count desc
 
 
 
@@ -140,7 +140,7 @@ order by TotalDeathCount desc
 
 -- Creating View to store data for Visualization
 
-create view Totaldeathcount as
+create view Totaldeathcountry as
 select Location, SUM(new_deaths) as TotalDeathCount
 from Portfolio_Projects..CovidDeaths
 --where location like '%India%' 
@@ -198,7 +198,7 @@ join Portfolio_Projects..CovidVaccinations cv
 where cd.continent is not NULL
 --order by 1,2
 )        
-select (vaccinated_rolling)/(population)*100 as   vaccinated_rolling_percent
+select (vaccinated_rolling)*100/(population) as   vaccinated_rolling_percent
 from popvsvac
 
 
@@ -217,7 +217,7 @@ join Portfolio_Projects..CovidVaccinations cv
  and cd.date = cv.date
 where cd.continent is not null
 )
-select *, ((aged_65_rolling)+(aged_70_rolling))/(total_deaths_rolling) as popvstotaldeath
+select *, ((aged_65_rolling)+(aged_70_rolling))/(total_deaths_rolling)*100 as popvstotaldeath
 from popvstotaldeath
 
 
