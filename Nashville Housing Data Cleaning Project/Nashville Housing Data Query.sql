@@ -171,6 +171,6 @@ from Portfolio_Projects..Nashville_Housing_Data
   
   -- Creating VIEW for further usage
 
-  create view Nashville_Housing_Data as
+  create view Nashville_Housing_Data_Cleaned as
   select *
   from Portfolio_Projects..Nashville_Housing_Data
