@@ -46,7 +46,7 @@ where row_num >1;
 
 select *
 from layoffs_staging
-where company like 'Booking.com'
+where company like 'Booking.com';
 
 
 -- Removing Duplicates
@@ -83,3 +83,63 @@ where row_num > 1;
 select *
 from duplicates_layoffs_staging
 where row_num > 1;
+
+
+-- 2. Standardizing data
+
+-- Triming Extra spaces 
+
+select company, trim(company)
+from duplicates_layoffs_staging;
+
+update duplicates_layoffs_staging
+set company = trim(company);
+
+-- renamed "duplicate_layoffs_staging" to "layoffs_staging_main"
+
+select *
+from layoffs_staging_main;
+
+-- categorizing "industry" column:
+
+select distinct industry
+from layoffs_staging_main 
+where industry like "Crypto%"
+order by industry asc;
+
+update layoffs_staging_main
+set industry = 'Crypto'
+where industry like 'Crypto%';
+
+
+-- updating Country column:
+
+select distinct country
+from layoffs_staging_main
+where country like "%States%"
+order by country asc;
+
+update layoffs_staging_main
+set country = 'States'
+where country like '%States%';
+
+-- or --
+
+update layoffs_staging_main
+set country = trim(trailing '.' from country)
+where country like '%States%';
+
+-- standardizing DATE column:
+
+select `date`, str_to_date(`date`, '%m/%d/%Y') as `date`
+from layoffs_staging_main;
+
+update layoffs_staging_main
+set `date` = str_to_date(`date`, '%m/%d/%Y');
+
+-- CHANGING DATA TYPE OF 'date' COLUMN:
+
+ALTER TABLE layoffs_staging_main
+MODIFY COLUMN `date` date;
+
+
