@@ -67,21 +67,8 @@ from layoffs_staging_main
 group by stage
 order by total_funds_raised desc;
 
+
 -- Rolling values of total layoffs based on date:
-
-
-select date
-from layoffs_staging_main;
-
-SELECT substring(`date`,1,7) Period, sum(total_laid_off) total_Layoffs
-FROM layoffs_staging_main
-WHERE substring(`date`,1,7) IS NOT NULL
-GROUP BY Period
-order by Period asc;
-
-
--- Creating a Rolling Calculation for total layoffs:
-
 
 WITH Rolling_total as
 (
@@ -127,30 +114,42 @@ from layoffs_staging_main
 group by company, year(date), month(date)
 order by company, year(date), month(date)
 ), 
-Count_layoff_ranking as
+rolling_count_layoff as
 (
 select *, 
-	 SUM(count_total_layoffs) over (PARTITION BY company, year_period order by year_period, month_period) Rolling_total_layoffs,
-	  DENSE_RANK() over (PARTITION BY count_total_layoffs order by count_total_layoffs desc) Layoff_ranking
+	 SUM(count_total_layoffs) over (PARTITION BY company, year_period order by year_period, month_period) Rolling_total_layoffs
 from frequent_layoffs
 where year_period is not null
 order by company, year_period, month_period
-
+),
+rolling_ranking as
+(
+select *,
+DENSE_RANK() over (order by Rolling_total_layoffs) Layoff_ranking
+from rolling_count_layoff
 )
 select *
-from Count_layoff_ranking
-where Layoff_ranking <= 5;
+from rolling_ranking
+where count_total_layoffs > 1
+order by year_period, month_period;
 
 
 
 
 
+-- Countries with higher funds in particular industry:
 
-select company, date, count(total_laid_off)
+with Total_funds_country as
+(
+select country, industry, sum(funds_raised_millions) total_funds_millions
 from layoffs_staging_main
-where company = 'Amazon'
-group by company, date;
-
-
+where funds_raised_millions is not null
+GROUP BY country, industry
+order by country, industry
+)
+select *, 
+	   DENSE_RANK() over(order by total_funds_millions asc)
+from Total_funds_country
+order by country asc, total_funds_millions desc;
 
 
