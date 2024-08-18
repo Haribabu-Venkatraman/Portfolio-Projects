@@ -8,7 +8,7 @@
 -- 3. Updating Nulls / Unknown Values
 -- 4. Removing Unnecessary Rows and Columns
 
-
+create database People_Depression_database;
 
 -- Looking at all values in the table:
 
@@ -85,23 +85,23 @@ from depression_staged_main
 where name like 'Mrs.%'
 
 update depression_staged_main
-set name = replace(name,'Mr.','')
+set name = replace(name,'Mr. ','')
 where name like 'Mr.%'
 
 update depression_staged_main
-set name = replace(name,'Mrs.','')
+set name = replace(name,'Mrs. ','')
 where name like 'Mrs.%'
 
 update depression_staged_main
-set name = replace(name,'Ms.','')
+set name = replace(name,'Ms. ','')
 where name like 'Ms.%'
 
 update depression_staged_main
-set name = replace(name,'Dr.','')
+set name = replace(name,'Dr. ','')
 where name like 'Dr.%'
 
 update depression_staged_main
-set name = replace(name,'PhD','')
+set name = replace(name,' PhD','')
 where name like '%PhD'
 
 update depression_staged_main
