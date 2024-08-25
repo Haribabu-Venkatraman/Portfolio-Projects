@@ -138,3 +138,9 @@ SET NAME = TRIM (NAME)
 use People_Depression_database
 select *
 from depression_staged_main
+
+
+-- Dropping row_number column:
+
+alter table depression_staged_main
+drop column rn
