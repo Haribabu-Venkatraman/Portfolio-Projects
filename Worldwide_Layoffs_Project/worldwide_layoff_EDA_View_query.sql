@@ -21,11 +21,13 @@ order by funds_raised_millions desc, date desc;
 
 -- Layoffs duration
 
+create view Layoff_Duration as 
 select min(date) start_date, max(date) last_date
 from layoffs_staging_main;
 
 -- layoff trend besed on YEAR and MONTH:
 
+create view Layoff_trend_Y_M as 
 select year(date) `year`, month(date) `month`, sum(total_laid_off) total_Layoffs
 from layoffs_staging_main
 group by year(date), month(date) 
@@ -33,6 +35,7 @@ order by year(date) desc;
 
 -- Companies with higher number of Layoffs:
 
+Create view Company_Layoff as
 select company, sum(total_laid_off) total_Layoffs
 from layoffs_staging_main
 group by company
@@ -40,6 +43,7 @@ order by total_layoffs desc;
 
 -- Imdustry with higher number of Layoffs:
 
+create view layoff_Industry as
 select industry, sum(total_laid_off) total_Layoffs
 from layoffs_staging_main
 group by industry
@@ -47,6 +51,7 @@ order by total_layoffs desc;
 
 -- Country with higher layoffs:
 
+create view  Layoffs_Country as
 select country, sum(total_laid_off) total_Layoffs, round(sum(percentage_laid_off), 3) total_percentage_Layoffs
 from layoffs_staging_main
 group by country
@@ -54,6 +59,7 @@ order by total_layoffs desc;
 
 -- Layoffs trends based on Stage:
 
+create view Layoffs_trends_Stage as
 select stage, sum(total_laid_off) total_Layoffs, round(sum(percentage_laid_off), 3) total_percentage_Layoffs
 from layoffs_staging_main
 group by stage
@@ -62,6 +68,7 @@ order by total_layoffs desc;
 
 -- Stages with higher Funds:
 
+create view Stages_High_Funds as
 select stage, sum(funds_raised_millions) total_funds_raised
 from layoffs_staging_main
 group by stage
@@ -70,6 +77,7 @@ order by total_funds_raised desc;
 
 -- Rolling values of total layoffs based on date:
 
+create view Total_Layoff_Date as
 WITH Rolling_total as
 (
 SELECT substring(`date`,1,7) Period, sum(total_laid_off) total_Layoffs, sum(funds_raised_millions) total_funds_raised
@@ -87,7 +95,7 @@ from Rolling_total;
 
 -- Top 5 total Layoff based on company per year:
 
-
+create view Top_Layoff_company_year as
 with Rolling_company_year as
 (
 select company, year(date) Period, sum(total_laid_off) total_layoffs
@@ -131,8 +139,8 @@ from rolling_count_layoff
 )
 select *
 from rolling_ranking
-where count_total_layoffs > 1
-order by year_period, month_period;
+where count_total_layoffs > 1;
+#order by year_period, month_period;
 
 
 

@@ -1,0 +1,261 @@
+"country","industry","total_funds_millions","Ranking"
+"United Kingdom","Consumer",0.0,1
+"Brazil","Support",1.0,2
+"Canada","Consumer",1.0,2
+"Vietnam","Fitness",1.0,2
+"Brazil","Sales",2.0,3
+"Denmark","Marketing",2.0,3
+"Canada","Media",3.0,4
+"India","Construction",3.0,4
+"China","Crypto",4.0,5
+"Brazil","HR",5.0,6
+"Colombia","HR",6.0,7
+"Canada","Infrastructure",7.0,8
+"Denmark","Consumer",7.0,8
+"Indonesia","Consumer",7.0,8
+"Seychelles","Crypto",8.0,9
+"Germany","Media",9.0,10
+"Luxembourg","Marketing",9.0,10
+"Nigeria","Crypto",9.0,10
+"Canada","Travel",11.0,11
+"Israel","Real Estate",15.0,12
+"India","HR",17.0,13
+"Australia","Marketing",18.0,14
+"Israel","Support",18.0,14
+"Australia","Healthcare",20.0,15
+"Singapore","Marketing",20.0,15
+"France","Media",22.0,16
+"Netherlands","Finance",22.0,16
+"Brazil","Recruiting",23.0,17
+"India","Data",23.0,17
+"United Kingdom","HR",23.0,17
+"Nigeria","Transportation",24.0,18
+"Sweden","Consumer",24.0,18
+"Australia","Recruiting",26.0,19
+"Japan","Media",26.0,19
+"Malaysia","Retail",26.0,19
+"Argentina","Crypto",28.0,20
+"United States of America","Fin-Tech",28.0,20
+"Australia","Construction",30.0,21
+"United Arab Emirates","Crypto",30.0,21
+"United Arab Emirates","Retail",30.0,21
+"Denmark","Education",34.0,22
+"Australia","Infrastructure",36.0,23
+"Indonesia","Education",40.0,24
+"Israel","Legal",41.0,25
+"Germany","Crypto",42.0,26
+"Kenya","Retail",42.0,26
+"Nigeria","Food",43.0,27
+"Israel","Food",45.0,28
+"Mexico","Finance",51.0,29
+"Kenya","Logistics",52.0,30
+"Ireland","Education",56.0,31
+"Sweden","Retail",56.0,31
+"Russia","Retail",60.0,32
+"Germany","Education",64.0,33
+"Australia","Real Estate",65.0,34
+"Vietnam","Real Estate",66.0,35
+"Australia","Logistics",69.0,36
+"United Arab Emirates","Healthcare",71.0,37
+"Kenya","Data",78.0,38
+"Switzerland","Finance",78.0,38
+"Brazil","Education",79.0,39
+"Portugal","Finance",80.0,40
+"Estonia","Transportation",82.0,41
+"Singapore","HR",82.0,41
+"Hungary","Infrastructure",83.0,42
+"Israel","Logistics",84.0,43
+"Portugal","Support",91.0,44
+"Israel","HR",92.0,45
+"Singapore","Consumer",95.0,46
+"India","Support",115.0,47
+"Thailand","Retail",120.0,48
+"Israel","Healthcare",122.0,49
+"Brazil","Marketing",128.0,50
+"New Zealand","Finance",130.0,51
+"Singapore","Travel",134.0,52
+"Indonesia","Food",139.0,53
+"Canada","Crypto",143.0,54
+"Poland","Education",148.0,55
+"Canada","Energy",149.0,56
+"Indonesia","Marketing",149.0,56
+"Germany","Fin-Tech",150.0,57
+"United Kingdom","Data",150.0,57
+"Kenya","Food",158.0,58
+"Australia","Consumer",165.0,59
+"Spain","Energy",167.0,60
+"Sweden","Transportation",167.0,60
+"Australia","Transportation",168.0,61
+"Finland","Retail",169.0,62
+"Denmark","Food",173.0,63
+"Hong Kong","Finance",175.0,64
+"Estonia","Sales",180.0,65
+"China","Other",184.0,66
+"Israel","Other",187.0,67
+"Australia","Retail",188.0,68
+"Canada","Logistics",198.0,69
+"Estonia","Security",199.0,70
+"Singapore","Finance",200.0,71
+"Colombia","Food",202.0,72
+"Germany","Fitness",204.0,73
+"United Kingdom","Security",211.0,74
+"Colombia","Construction",218.0,75
+"Germany","Product",224.0,76
+"Pakistan","Logistics",235.0,77
+"Germany","Healthcare",236.0,78
+"South Korea","Consumer",240.0,79
+"Finland","Data",245.0,80
+"Israel","Marketing",252.0,81
+"Nigeria","Finance",261.0,82
+"Australia","HR",263.0,83
+"Egypt","Transportation",264.0,84
+"United States of America","Manufacturing",274.0,85
+"Brazil","Consumer",276.0,86
+"Canada","Real Estate",285.0,87
+"Australia","Other",288.0,88
+"Canada","Support",290.0,89
+"Senegal","Finance",292.0,90
+"Brazil","Fitness",300.0,91
+"Australia","Energy",302.0,92
+"United Kingdom","Media",303.0,93
+"Canada","Healthcare",317.0,94
+"United Kingdom","Retail",320.0,95
+"Canada","Sales",332.0,96
+"Germany","HR",332.0,96
+"Israel","Consumer",335.0,97
+"Malaysia","Consumer",348.0,98
+"Canada","Construction",362.0,99
+"United Kingdom","Marketing",375.0,100
+"Sweden","Food",377.0,101
+"Germany","Data",384.0,102
+"Brazil","Healthcare",395.0,103
+"United States of America","Aerospace",402.0,104
+"Chile","Healthcare",408.0,105
+"Singapore","Crypto",412.0,106
+"Finland","Infrastructure",420.0,107
+"Canada","Transportation",427.0,108
+"Germany","Real Estate",428.0,109
+"Israel","Retail",457.0,110
+"Canada","Security",474.0,111
+"France","HR",495.0,112
+"Brazil","Crypto",500.0,113
+"Israel","Finance",509.0,114
+"Israel","Media",510.0,115
+"Hong Kong","Travel",521.0,116
+"Germany","Consumer",542.0,117
+"Argentina","Finance",544.0,118
+"Canada","Food",545.0,119
+"Austria","Crypto",546.0,120
+"France","Other",570.0,121
+"Australia","Crypto",572.0,122
+"Israel","Data",587.0,123
+"Israel","Transportation",597.0,124
+"Malaysia","Transportation",607.0,125
+"Hong Kong","Crypto",628.0,126
+"Canada","Other",638.0,127
+"India","Marketing",646.0,128
+"India","Logistics",663.0,129
+"Australia","Finance",669.0,130
+"Brazil","Other",672.0,131
+"Canada","Fin-Tech",681.0,132
+"Germany","Travel",686.0,133
+"India","Crypto",695.0,134
+"Italy","Real Estate",708.0,135
+"Romania","Food",749.0,136
+"Mexico","Crypto",756.0,137
+"Canada","Education",799.0,138
+"Singapore","Food",800.0,139
+"Israel","Security",839.0,140
+"United Arab Emirates","Transportation",903.0,141
+"India","Fitness",922.0,142
+"Ireland","Marketing",924.0,143
+"United States of America","",946.0,144
+"Norway","Food",956.0,145
+"France","Retail",1000.0,146
+"Brazil","Logistics",1014.0,147
+"Germany","Marketing",1021.0,148
+"United Kingdom","Crypto",1033.0,149
+"United Kingdom","Healthcare",1116.0,150
+"Indonesia","Finance",1119.0,151
+"Netherlands","Other",1120.0,152
+"Canada","Data",1126.0,153
+"Sweden","Healthcare",1136.0,154
+"Spain","Food",1200.0,155
+"Nigeria","Retail",1216.0,156
+"Canada","Marketing",1236.0,157
+"Austria","Education",1372.0,158
+"India","Other",1379.0,159
+"China","Healthcare",1400.0,160
+"United States of America","Hardware",1426.0,161
+"Brazil","Retail",1467.0,162
+"United States of America","Legal",1603.0,163
+"United States of America","Recruiting",1661.0,164
+"India","Media",1719.0,165
+"United States of America","Energy",1785.0,166
+"Turkey","Food",1800.0,167
+"Australia","Food",1804.0,168
+"Canada","Retail",1946.0,169
+"India","Healthcare",2000.0,170
+"Brazil","Transportation",2010.0,171
+"China","Real Estate",2100.0,172
+"Sweden","Other",2163.0,173
+"Brazil","Food",2249.0,174
+"Germany","Finance",2297.0,175
+"Brazil","Travel",2400.0,176
+"Germany","Retail",2413.0,177
+"Sweden","Media",2501.0,178
+"Brazil","Finance",2523.0,179
+"Netherlands","Food",2800.0,180
+"United Kingdom","Other",2800.0,180
+"Germany","Other",2833.0,181
+"United Kingdom","Travel",2955.0,182
+"United Kingdom","Aerospace",3000.0,183
+"Canada","Finance",3422.0,184
+"United Kingdom","Food",3500.0,185
+"Singapore","Retail",3513.0,186
+"China","Media",3700.0,187
+"United Kingdom","Finance",3971.0,188
+"Israel","Hardware",4250.0,189
+"Brazil","Real Estate",4768.0,190
+"India","Finance",4771.0,191
+"United States of America","Construction",4796.0,192
+"United States of America","Infrastructure",4988.0,193
+"Germany","Transportation",5136.0,194
+"United States of America","Support",5237.0,195
+"Indonesia","Retail",5359.0,196
+"United States of America","Education",5767.0,197
+"United States of America","Product",5811.0,198
+"United Kingdom","Transportation",5849.0,199
+"United States of America","HR",5962.0,200
+"Indonesia","Transportation",6238.0,201
+"United States of America","Sales",7135.0,202
+"Sweden","Finance",7776.0,203
+"India","Travel",8394.0,204
+"United States of America","Fitness",9467.0,205
+"Singapore","Transportation",9900.0,206
+"United States of America","Logistics",10941.0,207
+"United States of America","Crypto",13894.0,208
+"India","Retail",15118.0,209
+"United States of America","Marketing",15258.0,210
+"India","Food",15445.0,211
+"India","Education",17220.0,212
+"United States of America","Security",17423.0,213
+"United States of America","Travel",18173.0,214
+"United States of America","Data",19049.0,215
+"United Kingdom","Real Estate",19525.0,216
+"India","Real Estate",19800.0,217
+"India","Consumer",20843.0,218
+"United States of America","Other",21298.0,219
+"Lithuania","Transportation",24700.0,220
+"Netherlands","Transportation",24700.0,220
+"United States of America","Retail",28188.0,221
+"Germany","Food",29150.0,222
+"United States of America","Food",34612.0,223
+"India","Transportation",41092.0,224
+"China","Consumer",42609.0,225
+"United States of America","Healthcare",43536.0,226
+"United States of America","Real Estate",49838.0,227
+"United States of America","Finance",66768.0,228
+"United States of America","Consumer",88697.0,229
+"United States of America","Transportation",158946.0,230
+"United States of America","Media",495991.0,231
