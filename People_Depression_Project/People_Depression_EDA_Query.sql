@@ -18,7 +18,7 @@ order by age;
 -- Creating a Age bucket to standardize:
 
 select age,
-	Case when age < 20 then 'Under 20'
+	Case when age < 20 then '18-20'
 		 when age between 21 and 30 then '21-30'
 		 when age between 31 and 40 then '31-40'
 		 when age between 41 and 50 then '41-50'
@@ -37,7 +37,7 @@ alter table depression_staged_main
 add Age_Bucket varchar(255);
 
 update depression_staged_main
-set Age_Bucket = (Case when age < 21 then 'Under 20'
+set Age_Bucket = (Case when age < 21 then '18-20'
 		 when age between 21 and 30 then '21-30'
 		 when age between 31 and 40 then '31-40'
 		 when age between 41 and 50 then '41-50'
@@ -272,7 +272,7 @@ alter table depression_staged_main
 add Income_Bucket varchar(255);
 
 update depression_staged_main
-set Income_Bucket = (Case when Income between 0 and 10000 then 'Under 10k'
+set Income_Bucket = (Case when Income between 0 and 10000 then '0-10k'
 		 when Income between 10000 and 20000 then '10k-20k'
 		 when Income between 20000 and 30000 then '20k-30k'
 		 when Income between 30000 and 40000 then '30k-40k'

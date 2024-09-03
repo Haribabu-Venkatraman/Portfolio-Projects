@@ -5,13 +5,19 @@
 use People_Depression_database;
 
 
+
 -- Total number of People based Age Bucket:
+
+drop view if exists Total_Number_Age_Bucket;
 
 Create view Total_Number_Age_Bucket as 
 Select age_bucket, count(age_bucket) Count_Age_Group
 from depression_staged_main
 group by age_bucket
 --order by age_bucket asc;
+
+drop view if exists Percent_Total_Number_Age_Bucket;
+
 
 create view  Percent_Total_Number_Age_Bucket as
 with Percent_age_cte as
@@ -29,11 +35,15 @@ from Percent_age_cte
 
 -- Total people by Marital_Status:
 
+drop view if exists Total_Number_Marital_Status;
+
 create view Total_Number_Marital_Status as
 select Marital_Status, count(Marital_Status) Count_Marital
 from depression_staged_main
 group by Marital_Status
 -- order by Count_Marital;
+
+drop view if exists Percent_Total_Number_Marital_Status;
 
 create view Percent_Total_Number_Marital_Status as
 with Percent_ms as
@@ -51,6 +61,8 @@ from Percent_ms
 
 -- Employment Status and Education Level:
 
+drop view if exists Percent_Employment_Education;
+
 create view Percent_Employment_Education as
 with percent_Edu_Emp as
 (
@@ -67,6 +79,8 @@ select Education_Level,
 from percent_Edu_Emp
 --order by Count_Ed_Emp desc,Employment_Status
 
+
+drop view if exists Percent_Job_Status_Education;
 
 create view Percent_Job_Status_Education as
 with grad_njb as
@@ -131,12 +145,15 @@ on a.education_level = b.education_level
 
 
 -- Income Bucket:
+drop view if exists Total_Annual_Income_Bucket;
 
 create view Total_Annual_Income_Bucket as
 select distinct(Income_Bucket), count(Income_Bucket) Total_Count
 from depression_staged_main
 group by Income_Bucket
 --order by Total_Count desc
+
+drop view if exists Income_bestcase;
 
 create view Income_bestcase as
 select Income_Bucket,count(Income_Bucket) Total_count
@@ -146,6 +163,8 @@ where
 --	Physical_Activity_Level like 'Sedentary' and Dietary_Habits like 'Unhealthy' and Sleep_Patterns like 'Poor'
 group by Income_Bucket 
 --order by Total_count desc
+
+drop view if exists Income_worstcase;
 
 create view Income_worstcase as
 select Income_Bucket,count(Income_Bucket) Total_count
